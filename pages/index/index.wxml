@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="header">
+  <image class="logo" src="../../images/logo.jpg" ></image>
+</view>
+<view class="container">
+  <view>
+      <image class="coverImg" src="../../images/美女.jpeg" background-size="cover"></image>
+  </view>
+  <view class="headline">
+    <text class="motto">{{motto}}</text>
+  </view>
+  <view class="test">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 开始测试 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <button bindtap="getFaceImage">开始测试</button>
+    </block>
+  </view>
+  
+</view>
